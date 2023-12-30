@@ -1,0 +1,53 @@
+/* Footer.css */
+
+.linkedin {
+  color: white;
+  font-size: 30px;
+}
+
+.social-link {
+  margin-right: 25px;
+}
+
+.facebook {
+  color: white;
+  font-size: 30px;
+}
+
+.youtube {
+  color: white;
+  font-size: 30px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #3944bc;
+  color: #fff;
+}
+
+.footer-div {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 60px;
+}
+
+.copy {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+  .footer-div {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .social-links {
+    margin-top: 20px;
+  }
+}
