@@ -38,7 +38,7 @@ const HomePage = () => {
     const updatedProducts = productList.map((product) => {
       const actualPrice =
         product.price - product.price * (product.discountPercentage / 100);
-      return { ...product, actualPrice }; // Add actualPrice to each product
+      return { ...product, actualPrice };
     });
 
     const filtered = updatedProducts.filter(
@@ -50,13 +50,17 @@ const HomePage = () => {
     setFilteredProducts(filtered);
   }, [searchTerm, productList, priceFilter]);
 
+  const handleClearSearch = () => {
+    dispatch(setSearchTerm("")); 
+  };
+  
   const handleAddToCart = async (product) => {
     dispatch(addToCart(product));
 
     Swal.fire({
       position: "top-end",
       icon: "success",
-      title: "Product added successfully",
+      title: "Product add to cart successfully",
       showConfirmButton: false,
       timer: 1500,
     });
@@ -104,7 +108,7 @@ const HomePage = () => {
     <div className="my-20">
       <div>
         <h2 className="text-3xl font-bold text-center mb-5">Products</h2>
-        <div className="w-full sm:w-[450px] mx-auto mb-5">
+        <div className="w-full sm:w-[500px] mx-auto mb-5">
           <div className="relative flex items-center w-full h-12 rounded-lg shadow-lg bg-white overflow-hidden">
             <div className="grid place-items-center h-full w-12 text-gray-300">
               <svg
@@ -129,6 +133,14 @@ const HomePage = () => {
               onChange={handleSearchChange}
               className="outline-none p-3 text-black w-[450px]"
             />
+            {searchTerm && (
+              <button
+                onClick={handleClearSearch}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer login-btn text-sm font-semibold text-white px-8 py-2"
+              >
+                Clear
+              </button>
+            )}
           </div>
         </div>
         <div className="mb-6">
@@ -221,7 +233,7 @@ const HomePage = () => {
                       Original Price : {product.price}
                     </p>
                     <p className="text-[16px] mb-2 text-center font-medium">
-                      Discount : {product.discountPercentage}
+                      Discount : {product.discountPercentage}%
                     </p>
                     <p className="text-[16px] mb-2 text-center font-medium">
                       Actual Price : {actualPrice.toFixed(2)}
