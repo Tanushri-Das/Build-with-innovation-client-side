@@ -103,7 +103,7 @@ const Login = () => {
           <h1 className="text-black text-center text-3xl mb-6 font-bold">
             Login
           </h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-3 md:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-3 md:gap-6 mb-1">
             <div>
               <label className="block text-black text-lg font-semibold mb-1">
                 Username <span className="text-red-600">*</span>
@@ -181,7 +181,7 @@ const Login = () => {
             )}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-3 md:gap-6 mb-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-3 md:gap-6 my-1">
             <div>
               <label className="block text-black text-lg font-semibold mb-1">
                 FirstName <span className="text-red-600">*</span>
