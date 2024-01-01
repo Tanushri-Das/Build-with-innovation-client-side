@@ -1,11 +1,14 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { FaShoppingCart, FaBars, FaShoppingBasket } from "react-icons/fa";
 import "./Header.css";
+import { fetchCartCount } from "../../../redux/cartSlice";
 
 const Header = () => {
-  const cartCount = useSelector((state) => state.cart.length);
+  const cartCount = useSelector((state) => state.cart.cartCount);
+  console.log(cartCount);
+  const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const authToken = localStorage.getItem("authToken");
   const navigate = useNavigate();
@@ -17,6 +20,10 @@ const Header = () => {
   const closeMenu = () => {
     setShowMenu(false);
   };
+
+  useEffect(() => {
+    dispatch(fetchCartCount());
+  }, [dispatch]);
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
@@ -65,7 +72,11 @@ const Header = () => {
 
       {showMenu && (
         <div className="responsive-menu">
-          <NavLink to="/" className="home-link font-semibold" onClick={closeMenu}>
+          <NavLink
+            to="/"
+            className="home-link font-semibold"
+            onClick={closeMenu}
+          >
             Home
           </NavLink>
           <FaShoppingCart className="text-xl shopping-cart-icon" />

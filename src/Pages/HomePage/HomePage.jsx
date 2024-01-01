@@ -5,6 +5,7 @@ import { setSearchTerm, selectSearchTerm } from "../../redux/searchSlice";
 import "./HomePage.css";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import CustomSpinner from "../../Components/CustomSpinner/CustomSpinner";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -209,7 +210,7 @@ const HomePage = () => {
           </div>
         </div>
         {loading ? (
-          <div className="spinner"></div>
+          <CustomSpinner/>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mx-2 sm:mx-20">
             {filteredProducts.map((product) => {
