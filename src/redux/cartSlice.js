@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-// Function to load cart from local storage
+
 const loadCartFromLocalStorage = () => {
   const storedCart = localStorage.getItem("cart");
   return storedCart ? JSON.parse(storedCart) : [];
 };
 
-// Function to save cart to local storage
+
 const saveCartToLocalStorage = (cart) => {
   localStorage.setItem("cart", JSON.stringify(cart));
 };
@@ -52,7 +52,6 @@ const cartSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchCartCount.fulfilled, (state, action) => {
-      // Additional logic if needed when the fetch is fulfilled
     });
   },
 });
